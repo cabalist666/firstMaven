@@ -10,27 +10,38 @@ public class FindGeneSimpleAndTest {
         // start codon is "ATG";
         // stop codon is "TAA";
         String result = "";
+        boolean OutFlag = false;
         int startIndex = dna.indexOf("ATG");
+        int CurrentIndex = startIndex;
+        while(!OutFlag){
         if(startIndex == -1){
             return "";
         }
-        int endIndex = dna.indexOf("TAA",startIndex+3);
+        int endIndex = dna.indexOf("TAA",CurrentIndex+3);
         // 要包含TAA
         if(endIndex == -1){
             return "";
         }
-        result = dna.substring(startIndex,endIndex+3);
         if((endIndex-startIndex)%3 == 0) {
-            return result;
+            OutFlag = true;
+            result = dna.substring(startIndex,endIndex+3);
         } else{
-            return "";
+            CurrentIndex =  endIndex;
+            //return "";
         }
+        }
+        return result;
     }
 
     public static void main(String[] args){
-        String dna = "AATGCGTAATATGGT";
+        String dna = "AATGCGATAATATGGT";
         System.out.println("DNA strand is " + dna);
         String gene = findGeneSimple(dna);
         System.out.println("Gene is "+ gene);
+
+        String dna1 = "ATGATCGCTAATAATTAAGCT";
+        System.out.println("DNA strand is " + dna1);
+        String gene1 = findGeneSimple(dna1);
+        System.out.println("Gene is "+ gene1);
     }
 }
