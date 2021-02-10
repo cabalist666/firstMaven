@@ -1,7 +1,8 @@
+package GrayScaleConverter;
+
 import edu.duke.DirectoryResource;
 import edu.duke.ImageResource;
 import edu.duke.Pixel;
-
 import java.io.File;
 
 public class GrayScaleConverter {
