@@ -16,6 +16,7 @@ public class TheChildClass extends TheParentClass {
 
     public void value(){
         name = "Shan";
+        // 呼叫父類別的method
         super.value();
         System.out.println(name);
         System.out.println(super.name);
@@ -25,9 +26,18 @@ public class TheChildClass extends TheParentClass {
 
     public static void main(String[] args) {
         //要先有一個子類別的宣告。才能再去呼叫其method。
-        TheChildClass test = new TheChildClass(5,"123");
-        test.value();
+        TheChildClass child = new TheChildClass(5,"123");
+        System.out.println(child.toString());
+        System.out.println(child);
+        child.value();
         //System.out.println(test.prop);
         //System.out.println(test);
+    }
+
+    @Override
+    public String toString() {
+        return "TheChildClass{" +
+                "prop='" + prop + '\'' +
+                '}';
     }
 }
